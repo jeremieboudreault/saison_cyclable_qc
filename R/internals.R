@@ -36,7 +36,7 @@ names_stns <- c(
 )
 
 # Names for the weather data files.
-names_weather_data <- list(
+names_wdata <- list(
 
     # Geo -------------------------
     LONGITUDE           = "GEO",
