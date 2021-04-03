@@ -16,12 +16,10 @@ library(data.table)
 library(ggplot2)
 
 
-# Approximatly equal function --------------------------------------------------
+# Functions and globals --------------------------------------------------------
 
 
-`%~=%` <- function(x, y, tol = 0.05) {
-    return(abs(x - y) < tol)
-}
+source(file.path("R", "internals.R"))
 
 
 # Imports ----------------------------------------------------------------------
@@ -33,27 +31,7 @@ stns <- data.table::fread(
 )
 
 # Update names.
-names(stns) <- c(
-    "NAME",
-    "PROVINCE",
-    "CLIMATE_ID",
-    "STATION_ID",
-    "OMM_ID",
-    "TC_ID",
-    "LATITUDE",
-    "LONGITUDE",
-    "LATITUDE_PROJ",
-    "LONGITUDE_PROJ",
-    "ALTITUDE",
-    "YEAR_START",
-    "YEAR_END",
-    "YEAR_START_H",
-    "YEAR_END_H",
-    "YEAR_START_D",
-    "YEAR_END_D",
-    "YEAR_START_M",
-    "YEAR_END_M"
-)
+names(stns) <- names_stns
 
 
 # Extract Airport Station ID ---------------------------------------------------
@@ -70,6 +48,10 @@ stns_airport <- stns[LATITUDE  %~=% airport_lat &
                        STATION_ID,
                        YEAR_START_D,
                        YEAR_END_D)]
+
+# Take a look at what we've got.
+stns_airport
+
 
 # Weather Can API --------------------------------------------------------------
 
