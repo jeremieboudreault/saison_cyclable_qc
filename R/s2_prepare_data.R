@@ -19,7 +19,7 @@ library(ggplot2)
 # Functions and globals --------------------------------------------------------
 
 
-source(file.path("R", "internals.R"))
+source(file.path("R", "functions", "internals.R"))
 
 
 # Imports ----------------------------------------------------------------------
@@ -131,3 +131,4 @@ qs::qsave(
     x    = data,
     file = file.path("out", "quebec_airport_data.qs")
 )
+
