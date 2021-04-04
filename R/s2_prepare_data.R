@@ -118,7 +118,7 @@ data[is.nan(SNOW_TOT), SNOW_TOT := SNOW_TOT_APPROX]
 
 
 # Calculate field <WYEAR> from july to july of next year.
-data[, WYEAR := floor(YEAR + 0.5 + MONTH / 12)]
+data[, WYEAR := as.integer(floor(YEAR + 0.5 + MONTH / 12))]
 
 # Remove last winter year as it is incomplete.
 data <- data[WYEAR != max(data$WYEAR), ]
@@ -127,7 +127,18 @@ data <- data[WYEAR != max(data$WYEAR), ]
 # Calculate day of year --------------------------------------------------------
 
 
+# Basis day of year (1 to 365/366).
 data[, DAYOFYEAR := as.integer(format(as.Date(data$DATETIME), "%j"))]
+
+# Adjustement so that we have continuous value for each winter.
+data[MONTH >= 7 & YEAR %% 4 == 0L, DAYOFYEAR := DAYOFYEAR - 366]
+data[MONTH >= 7 & YEAR %% 4 != 0L, DAYOFYEAR := DAYOFYEAR - 365]
+
+
+# Reorder by <DAYOFYEAR> and <WYEAR>--------------------------------------------
+
+
+data.table::setorderv(data, c("WYEAR", "DAYOFYEAR"))
 
 
 # Export results for future use ------------------------------------------------
