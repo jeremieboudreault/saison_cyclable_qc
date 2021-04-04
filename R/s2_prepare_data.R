@@ -124,6 +124,12 @@ data[, WYEAR := floor(YEAR + 0.5 + MONTH / 12)]
 data <- data[WYEAR != max(data$WYEAR), ]
 
 
+# Calculate day of year --------------------------------------------------------
+
+
+data[, DAYOFYEAR := as.integer(format(as.Date(data$DATETIME), "%j"))]
+
+
 # Export results for future use ------------------------------------------------
 
 
