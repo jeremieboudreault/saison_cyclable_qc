@@ -15,28 +15,38 @@ __Mon but__ : fournir les bases d'une analyse rigoureuse pour prendre une décis
 Données
 --------------------------------------------------------------------------------
 
+J'ai utilisé les données climatiques historisques sur la période `1956-2020` à l'aéroport de Québec car c'était la station avec la plus grande historique de données.
+
+Pour les biens de la cause, j'ai conservé que la période `1980-2020` pour les analyses.
 
 
-Premier jour de neige
+Scenario pessimiste
 --------------------------------------------------------------------------------
 
 
+Dans ce scénario, on __fermerait__ le réseau avant d'avoir la première séquence de 3 jours consécutifs avec au moins 1 cm de neige accumulée au sol. 
 
-Différence (1980-2000 versus 2000-2020)
+On __ouvrirait__ au moment où il n'y aura aucune accumulation de neige dans les 15 jours suivants, avec un moment tampon de 10 jours pour nettoyer le réseau. 
+
+
+Scenario optimiste
 --------------------------------------------------------------------------------
 
+Dans ce scénario, on __fermerait__ le réseau avant d'avoir la première séquence de 5 jours consécutifs avec au moins 3 cm de neige accumulée au sol. 
+
+On __ouvrirait__ au moment où il n'y aura aucune accumulation supérieure à 2 cm de neige dans les 5 jours suivants, avec un moment tampon de 10 jours pour nettoyer le réseau. 
 
 
-Dernier jour de neige
+Résultats
 --------------------------------------------------------------------------------
 
-
-Différence (1980-2000 versus 2000-2020)
---------------------------------------------------------------------------------
-
-
-Conclusion
---------------------------------------------------------------------------------
+| Scéanario                         | Ouverture du réseau | Fermerture du réseau | Saison cyclable estivale |
+|-----------------------------------|---------------------|----------------------|--------------------------|
+| Actuel                            | __1er mai__         | __31 octobre__       | __183 jours__            |
+| Scénario pessimiste (1980-1999)   | 27 avril            | 15 novembre          | 203 jours                |
+| Scénario pessimiste (2000-2020)   | 22 avril            | 23 novembre          | 216 jours                |
+| Scénario optimiste  (1980-1999)   | 25 avril            | 21 novembre          | 211 jours                |
+| Scenario optimiste  (2000-2020)   | __17 avril__        | __29 novembre__      | __227 jours__            |
 
 
 
@@ -44,6 +54,8 @@ Conclusion
 --------------------------------------------------------------------------------
 
 
++ Améliorer la méthode d'imputation de données manquantes pour la quantité de neige au sol
++ Tester différentes scénarios, analyser l'écart-type de la date d'ouverture et certains quantiles
 + Que ce passera-t-il dans un avenir rapproché (2030, 2050) selon différents scénarios de changements climatiques ?
 
 
