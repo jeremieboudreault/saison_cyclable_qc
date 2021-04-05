@@ -167,7 +167,7 @@ calculate_oc_dates <- function(
 # Note : In this scenario, the cycling network :
 #        > Close before we have 3 consecutive days with >= 1cm accumulation
 #        > Open when we have 15 days with <= 0cm accumulation + 10 days delay.
-res <- dtlapply(
+res_pes <- dtlapply(
     X              = sort(unique(data$WYEAR)),
     FUN            = calculate_oc_dates,
     snow_qty_close = 1L,
@@ -178,13 +178,27 @@ res <- dtlapply(
     print_plot     = FALSE
 )
 
-# Opening date.
-j_to_date(floor(res[WYEAR >= 1980 & WYEAR <= 2000, mean(DAY_OPEN)]))
-j_to_date(floor(res[WYEAR >= 2001 & WYEAR <= 2020, mean(DAY_OPEN)]))
+# Opening and closing dates.
+open_1999_pes <- floor(res_pes[WYEAR >= 1980 & WYEAR <= 1999, mean(DAY_OPEN)])
+open_2020_pes <- floor(res_pes[WYEAR >= 2000 & WYEAR <= 2020, mean(DAY_OPEN)])
+close_1999_pes <- floor(res_pes[WYEAR >= 1980 & WYEAR <= 1999, mean(DAY_CLOSE)])
+close_2020_pes <- floor(res_pes[WYEAR >= 2000 & WYEAR <= 2020, mean(DAY_CLOSE)])
 
-# Closing date.
-j_to_date(floor(res[WYEAR >= 1980 & WYEAR <= 2000, mean(DAY_CLOSE)]) + 365)
-j_to_date(floor(res[WYEAR >= 2001 & WYEAR <= 2020, mean(DAY_CLOSE)]) + 365)
+# Pessimist results 1980-1999.
+message(sprintf(
+    "Scénario pessimiste : saison cyclable du %s au %s (%s jours). [1980-1999]",
+    j_to_date(open_1999_pes),
+    j_to_date(close_1999_pes + 365),
+    366 - (open_1999_pes - close_1999_pes)
+))
+
+# Pessimist results 2000-2020.
+message(sprintf(
+    "Scénario pessimiste : saison cyclable du %s au %s (%s jours). [2000-2020]",
+    j_to_date(open_2020_pes),
+    j_to_date(close_2020_pes + 365),
+    366 - (open_2020_pes - close_2020_pes)
+))
 
 
 # Optimistic scenario ----------------------------------------------------------
@@ -193,7 +207,7 @@ j_to_date(floor(res[WYEAR >= 2001 & WYEAR <= 2020, mean(DAY_CLOSE)]) + 365)
 # Note : In this scenario, the cycling network :
 #        > Close before we have 5 consecutive days with >= 3cm accumulation
 #        > Open when we have 5 days with <= 2cm accumulation + 10 days delay.
-res <- dtlapply(
+res_opt <- dtlapply(
     X              = sort(unique(data$WYEAR)),
     FUN            = calculate_oc_dates,
     snow_qty_close = 3L,
@@ -205,10 +219,24 @@ res <- dtlapply(
 )
 
 # Opening date.
-j_to_date(floor(res[WYEAR >= 1980 & WYEAR <= 2000, mean(DAY_OPEN)]))
-j_to_date(floor(res[WYEAR >= 2001 & WYEAR <= 2020, mean(DAY_OPEN)]))
+open_1999_opt  <- floor(res_opt[WYEAR >= 1980 & WYEAR <= 1999, mean(DAY_OPEN)])
+open_2020_opt  <- floor(res_opt[WYEAR >= 2000 & WYEAR <= 2020, mean(DAY_OPEN)])
+close_1999_opt <- floor(res_opt[WYEAR >= 1980 & WYEAR <= 1999, mean(DAY_CLOSE)])
+close_2020_opt <- floor(res_opt[WYEAR >= 2000 & WYEAR <= 2020, mean(DAY_CLOSE)])
 
-# Closing date.
-j_to_date(floor(res[WYEAR >= 1980 & WYEAR <= 2000, mean(DAY_CLOSE)]) + 365)
-j_to_date(floor(res[WYEAR >= 2001 & WYEAR <= 2020, mean(DAY_CLOSE)]) + 365)
 
+# Optimistic results 1980-1999.
+message(sprintf(
+    "Scénario optimiste : saison cyclable du %s au %s (%s jours). [1980-1999]",
+    j_to_date(open_1999_opt),
+    j_to_date(close_1999_opt + 365),
+    366 - (open_1999_opt - close_1999_opt)
+))
+
+# Pessimist results 2000-2020.
+message(sprintf(
+    "Scénario optimistie : saison cyclable du %s au %s (%s jours). [2000-2020]",
+    j_to_date(open_2020_opt),
+    j_to_date(close_2020_opt + 365),
+    366 - (open_2020_opt - close_2020_opt)
+))
