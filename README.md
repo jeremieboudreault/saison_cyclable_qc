@@ -15,17 +15,17 @@ __Mon but__ : fournir les bases d'une analyse rigoureuse pour prendre une décis
 Données
 --------------------------------------------------------------------------------
 
-J'ai utilisé les données climatiques historisques provenant des trois stations situées à l'aéroport de Québec sur la période `1956-2020`. Ces stations étaient celles situées le plus près de la Ville de Québec et avec la plus grande historique de données. Pour les analyses, je n'ai conservé que les périods `1980-1999` et `2000-2020`.
+J'ai utilisé les données climatiques historiques provenant des trois stations situées à l'aéroport de Québec sur la période `1956-2020`. Ces stations étaient celles situées le plus près de la Ville de Québec et avec la plus grande historique de données. Pour les analyses, je n'ai conservé que les périods `1980-1999` et `2000-2020`.
 
 
-Scenario pessimiste
+Scénario pessimiste
 --------------------------------------------------------------------------------
 
 
 Dans ce scénario, on __fermerait__ le réseau avant d'avoir la première séquence de 3 jours consécutifs avec au moins 1 cm de neige accumulée au sol. On __ouvrirait__ au moment où il n'y aurait aucune accumulation de neige dans les 15 jours suivants, avec un moment tampon de 10 jours pour nettoyer le réseau. 
 
 
-Scenario optimiste
+Scénario optimiste
 --------------------------------------------------------------------------------
 
 Dans ce scénario, on __fermerait__ le réseau avant d'avoir la première séquence de 5 jours consécutifs avec au moins 3 cm de neige accumulée au sol. On __ouvrirait__ au moment où il n'y aurait aucune accumulation supérieure à 2 cm de neige dans les 5 jours suivants, avec un moment tampon de 10 jours pour nettoyer le réseau. 
@@ -34,7 +34,8 @@ Dans ce scénario, on __fermerait__ le réseau avant d'avoir la première séque
 Résultats
 --------------------------------------------------------------------------------
 
-| Scéanario                           | Ouverture du réseau | Fermerture du réseau | Durée de la saison cyclable |
+
+| Scénario                            | Ouverture du réseau | Fermerture du réseau | Durée de la saison cyclable |
 |-------------------------------------|---------------------|----------------------|-----------------------------|
 | __Actuel__                          | __1er mai__         | __31 octobre__       | __183 jours__               |
 | Scénario pessimiste (1980-1999)     | 27 avril            | 15 novembre          | 203 jours                   |
@@ -43,11 +44,7 @@ Résultats
 | __Scenario optimiste__  (2000-2020) | __17 avril__        | __29 novembre__      | __227 jours__               |
 
 
-Analyse
---------------------------------------------------------------------------------
-
-
-### Ouverture précode 
+### Ouverture précoce 
 
 En se basant sur les données des 20 dernières année, une ouverture précoce du réseau (~ 1-2 semaines) serait envisageable. Étant donné le délai de nettoyage utilisé (10 jours), il se pourrait que même si le réseau ouvre plutôt, le réseau ne soit pas 100% opérationnel à la date indiquée. En fait, c'est déjà ce qui se passe avec la date actuelle : le réseau doit ouvrir le 1er mai, mais est rarement prêt pour cette date.
 
@@ -59,14 +56,14 @@ Pour la fermeture, les données montrent que pour les 40 dernières années, on 
 
 ### Durée de la saison cyclable
 
-Dans tous les cas étudiés, on pourrait se permettre d'ajoute entre `20` et `45` jours à la saison cyclable hivernale.
+Dans tous les cas étudiés, en modifiant les dates d'ouverture et de fermeture du réseau, on viendrait ajouter entre `20` et `45` jours à la saison cyclable estivale.
 
 
 Conclusion
 --------------------------------------------------------------------------------
 
-Les données météorologique historiques à l'aéroport de Québec nous fournissent un argumentaire solidaire quant au prolongement de la saison cyclable. Il est moins clair si l'on doit ouvrir le réseau plus tôt (étant donné les délais de nettoyage et de déneigement). Cependant, les données démontrent clairement que l'on pourrait garder le réseau ouvert 3-4 semaines de plus en novembre.
+Les données météorologique historiques à l'aéroport de Québec nous fournissent un argumentaire solide quant au prolongement de la saison cyclable. Les données démontrent clairement que l'on pourrait garder le réseau ouvert 3-4 semaines de plus en automne. Cependant, il est moins clair si l'on devrait ouvrir le réseau plus tôt au printemps, étant donné les délais de déneigement et de nettoyage. Voilà !
 
 
 
-___Merci !___
+___Enjoy !___ ✌🏻
