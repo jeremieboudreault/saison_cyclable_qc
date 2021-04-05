@@ -86,3 +86,21 @@ names_wdata <- list(
 `%~=%` <- function(x, y, tol = 0.05) {
     return(abs(x - y) < tol)
 }
+
+# Apply a function and return a data.table.
+dtlapply <- function(X, FUN, ...) {
+    do.call(rbind, lapply(X, FUN, ...))
+}
+
+# Day of year to DD/MM format.
+j_to_date <- function(j, leap = FALSE) {
+    ndays <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+    if (leap) ndays[2L] <- ndays[2L] + 1L
+    cndays <- c(0, cumsum(ndays))
+    month <- which((j - cndays) <= 0)[1L] - 1L
+    day <- j - cndays[month]
+    if (nchar(month) == 1L) month <- paste0("0", month)
+    if (nchar(day) == 1L) day <- paste0("0", day)
+    return(paste0(day, "-", month))
+}
+
