@@ -141,6 +141,24 @@ data[MONTH >= 7 & YEAR %% 4 != 0L, DAYOFYEAR := DAYOFYEAR - 365]
 data.table::setorderv(data, c("WYEAR", "DAYOFYEAR"))
 
 
+# Check NA for <SNOW_GRND> -----------------------------------------------------
+
+
+# Calculate number and percentage of NAs.
+miss <- data[, .(P_NA_SNOW_GRND = mean(is.na(SNOW_GRND) | is.nan(SNOW_GRND)),
+                 N_NA_SNOW_GRND = sum(is.na(SNOW_GRND) | is.nan(SNOW_GRND))),
+             by = c("WYEAR")]
+
+# Check result.
+miss
+
+# Prior to 1955, the series are missing a lot of data (close to 100%)
+data <- data[WYEAR > 1955, ]
+
+# After 1995, there are around 50% of missing, which may correspond to 0 values.
+data[is.na(SNOW_GRND) | is.nan(SNOW_GRND), SNOW_GRND := 0]
+
+
 # Export results for future use ------------------------------------------------
 
 
